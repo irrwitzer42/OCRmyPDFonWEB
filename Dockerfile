@@ -1,7 +1,7 @@
 FROM python:3.11.3-slim-buster
 
 RUN apt-get update \
-    && apt install tesseract-ocr git ghostscript pngquant -y \
+    && apt install git ghostscript pngquant -y \
     && apt-get clean
 
 RUN export PATH=/user/local/bin:$PATH 
