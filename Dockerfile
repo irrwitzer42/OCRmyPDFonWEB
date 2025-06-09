@@ -9,17 +9,17 @@ RUN export PATH=/user/local/bin:$PATH
 RUN apt-get update && \ 
     apt-get install libleptonica-dev automake make pkg-config libsdl-pango-dev libicu-dev libcairo2-dev bc ffmpeg libsm6 libxext6 -y 
 
-RUN wget github.com/tesseract-ocr/tesseract/archive/5.5.1.zip && \
-    unzip 5.5.1.zip && \
-    cd tesseract-5.5.1 && \
-     ./autogen.sh && \
-     ./configure && \
-     make && \
-     make install && \
-     ldconfig && \
-     make training && \
-     make training-install && \
-     tesseract --version
+RUN wget github.com/tesseract-ocr/tesseract/archive/5.5.1.zip
+RUN unzip 5.5.1.zip
+RUN cd tesseract-5.5.1
+RUN ./autogen.sh
+RUN ./configure
+RUN make
+RUN make install
+RUN ldconfig
+RUN make training
+RUN make training-install
+RUN tesseract --version
 
 run mkdir /app
 WORKDIR /app
