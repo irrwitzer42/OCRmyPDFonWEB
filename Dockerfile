@@ -3,7 +3,7 @@ FROM python:3.11.3-slim-buster
 RUN apt-get install apt-transport-https -y
 
 RUN echo "deb https://notesalexp.org/tesseract-ocr5/$(lsb_release -cs)/ $(lsb_release -cs) main" \
-| sudo tee /etc/apt/sources.list.d/notesalexp.list > /dev/null
+| tee /etc/apt/sources.list.d/notesalexp.list > /dev/null
 
 RUN apt-get update -oAcquire::AllowInsecureRepositories=true \
     && apt-get install notesalexp-keyring -oAcquire::AllowInsecureRepositories=true
