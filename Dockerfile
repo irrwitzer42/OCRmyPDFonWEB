@@ -1,6 +1,6 @@
 FROM python:3.11.3-slim-buster
 
-RUN RUN apt-get update \
+RUN apt-get update \
     && apt install software-properties-common -y
 
 RUN add-apt-repository ppa:alex-p/tesseract-ocr5
