@@ -7,7 +7,7 @@ RUN apt-get update \
 RUN export PATH=/user/local/bin:$PATH 
 
 RUN apt-get update && \ 
-    apt-get install libleptonica-dev automake make pkg-config libsdl-pango-dev libtool g++ gcc libicu-dev libcairo2-dev bc ffmpeg libsm6 libxext6 -y 
+    apt-get install libleptonica-dev automake make pkg-config libsdl-pango-dev libtool g++ libtool libleptonica-dev libpango1.0-dev gcc libicu-dev libcairo2-dev bc ffmpeg libsm6 libxext6 -y 
 
 RUN wget github.com/tesseract-ocr/tesseract/archive/5.5.1.zip
 RUN unzip 5.5.1.zip
