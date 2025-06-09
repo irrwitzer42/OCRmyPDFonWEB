@@ -1,7 +1,7 @@
 FROM python:3.11.3-slim-buster
 
 RUN apt-get update \
-    && apt install tesseract-ocr ghostscript pngquant -y \
+    && apt install tesseract-ocr git ghostscript pngquant -y \
     && apt-get clean
 
 run mkdir /app
