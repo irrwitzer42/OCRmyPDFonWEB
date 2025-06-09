@@ -13,6 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
 
 COPY server.py /app/server.py
 
-COPY streamlit/config.toml ~/.streamlit/config.toml
+COPY streamlit_config.toml ~/.streamlit/config.toml
 
 ENTRYPOINT ["streamlit", "run", "server.py"]
