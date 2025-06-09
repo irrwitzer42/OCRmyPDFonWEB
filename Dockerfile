@@ -14,7 +14,7 @@ RUN unzip 5.5.1.zip
 RUN cd tesseract-5.5.1 && \
      ./autogen.sh && \
      ./configure && \
-     make CXX=/usr/local/bin/g++ && \
+     make && \
      make install && \
      ldconfig && \
      make training && \
