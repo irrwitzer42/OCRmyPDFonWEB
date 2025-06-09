@@ -1,6 +1,5 @@
 FROM jbarlow83/ocrmypdf-ubuntu
 
-RUN mkdir /app
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
