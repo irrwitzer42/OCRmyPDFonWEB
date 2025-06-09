@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 RUN wget github.com/tesseract-ocr/tesseract/archive/5.5.1.zip
 RUN unzip 5.5.1.zip
-RUN cd tesseract-4.1.1 && \
+RUN cd tesseract-5.5.1 && \
      ./autogen.sh && \
      ./configure && \
      make && \
