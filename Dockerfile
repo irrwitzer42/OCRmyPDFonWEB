@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt && rm requirements.txt
 
 COPY server.py /app/server.py
 
