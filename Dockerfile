@@ -13,6 +13,4 @@ RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
 
 COPY server.py /app/server.py
 
-COPY streamlit_config.toml ~/.streamlit/config.toml
-
-ENTRYPOINT ["streamlit", "run", "server.py"]
+ENTRYPOINT ["streamlit", "run", "server.py", "--server.port=8501", "--server.address=0.0.0.0"]
