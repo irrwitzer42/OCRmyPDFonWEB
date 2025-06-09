@@ -11,14 +11,14 @@ RUN apt-get update && \
 
 RUN wget github.com/tesseract-ocr/tesseract/archive/5.5.1.zip
 RUN unzip 5.5.1.zip
-RUN cd tesseract-5.5.1
-RUN ./autogen.sh
-RUN ./configure
-RUN make
-RUN make install
-RUN ldconfig
-RUN make training
-RUN make training-install
+RUN cd tesseract-4.1.1 && \
+     ./autogen.sh && \
+     ./configure && \
+     make && \
+     make install && \
+     ldconfig && \
+     make training && \
+     make training-install
 RUN tesseract --version
 
 run mkdir /app
