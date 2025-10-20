@@ -1,8 +1,10 @@
-FROM jbarlow83/ocrmypdf-ubuntu
+FROM jbarlow83/ocrmypdf-alpine
 
-RUN apt-get update \
-    && apt install pip -y \
-    && apt-get clean
+# Install python/pip
+ENV PYTHONUNBUFFERED=1
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python \
+        && python3 -m ensurepip \
+        && pip3 install --no-cache --upgrade pip setuptools
 
 WORKDIR /app
 
