@@ -1,3 +1,5 @@
+name: ocrmypdf
+
 services:
   ocrmypdfonweb:
     container_name: ocrmypdfonweb
