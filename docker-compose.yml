@@ -1,0 +1,7 @@
+services:
+  ocrmypdfonweb:
+    container_name: ocrmypdfonweb
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8501:8501
