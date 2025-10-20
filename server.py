@@ -22,6 +22,7 @@ ocrmypdf_ocr=False
 ocrmypdf_remove_background=False
 ocrmypdf_deskew=False
 ocrmypdf_optimize=1
+ocrmypdf_language=None
 
 st.set_page_config(page_title='OCRmyPDFonWEB')
 
@@ -45,7 +46,8 @@ def uploader_callback():
                         deskew=ocrmypdf_deskew,
                         tesseract_timeout=400 if ocrmypdf_ocr else 0, 
                         skip_text=True, 
-                        max_image_mpixels=901167396
+                        max_image_mpixels=901167396,
+                        language=ocrmypdf_language
                     )
 
                     st.session_state[STATE_FIXED_PDF_PATH] = fixed_path
@@ -57,13 +59,31 @@ def download_callback():
     for key in st.session_state.keys():
         del st.session_state[key]
 
+def get_language_list(directory):
+    '''
+        Get list of installed languages to select and get better results 
+    '''
+    # List to hold the base names without extension
+    language_list = []
+    
+    # Iterate through all files in the specified directory
+    for filename in os.listdir(directory):
+        if filename.endswith('.traineddata'):
+            # Extract base name without extension and append to the list
+            language_list.append(filename[:-len('.traineddata')])
+
+    language_list.sort()
+
+    return language_list
+
 c1 = st.container()
 c1.title("OCRmyPDFonWEB")
 
 if STATE_FIXED_PDF_PATH not in st.session_state:
     c1.write("Select options and upload PDF. Once this process is successfully completed, the edited PDF file will be available for download.")
-    ocrmypdf_ocr = c1.checkbox('Optical character recognition (OCR)')
-    ocrmypdf_remove_background = c1.checkbox('Remove background')
+    ocrmypdf_language = c1.selectbox('Language', get_language_list('/usr/share/tessdata'), index=2)
+    ocrmypdf_ocr = c1.checkbox('Optical character recognition (OCR)', value=True)
+    ocrmypdf_remove_background = c1.checkbox('Remove background', disabled=True)
     ocrmypdf_deskew = c1.checkbox('Deskew')
     ocrmypdf_optimize = c1.slider(
         label = "Optimize file size (0 off, 1 without quality loss, 3 smallest but maybe with slight quality loss)",
